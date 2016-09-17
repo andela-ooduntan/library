@@ -1,0 +1,15 @@
+<h2>Found {{searchResult.length}} results for "{{searchTerm}}"</h2>
+
+<div class="row">
+    <div class="col-lg-4" ng-repeat="result in searchResult">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{result.title}}</div>
+            <div class="panel-body">
+                <p>Author: {{result.author}}</p>
+                <p>Publisher: {{result.publisher}}</p>
+                <p>Year: {{result.year}}</p>
+                <p>Quantity: {{result.quantity}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="col-lg-6">
+        <h2>Add a book to the store</h2>
+        <form ng-submit="addBookToStore()">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" ng-model="book.title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" class="form-control" ng-model="book.author" id="author">
+            </div>
+            <div class="form-group">
+                <label for="publish">Publisher:</label>
+                <input type="text" class="form-control" ng-model="book.publisher" id="publish">
+            </div>
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <input type="text" class="form-control" ng-model="book.year" id="year">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="text" class="form-control" ng-model="book.quantity" id="quantity">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon3">₦</span>
+                    <input type="text" id="price" class="form-control" placeholder="Price" ng-model="book.price" aria-describedby="sizing-addon3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <button type="submit" class="btn btn-default pull-left">Submit</button>
+                </div>
+                <div class="col-lg-4">
+                    <div class="small text-success">{{saveResult}}</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="loader pull-right" ng-show="saving"></div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="container">
+    <h2 class="text-center">All books</h2>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Publisher</td>
+                <td>Year</td>
+                <td>Quantity</td>
+                <td>Price (₦)</td>
+                <td>Delete</td>
+                <td>Edit</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="books in bookList">
+                <td>{{$index + 1}}</td>
+                <td>{{books.title}}</td>
+                <td>{{books.author}}</td>
+                <td>{{books.publisher}}</td>
+                <td>{{books.year}}</td>
+                <td>{{books.quantity}}</td>
+                <td>{{books.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" ng-click="deleteBook($index)">Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" ui-sref="edit({ id: books._id })">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
